@@ -1,4 +1,4 @@
-package service;
+package service.emprestimo;
 
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -12,7 +12,6 @@ public class EmprestimoService {
     Calendar calendar = Calendar.getInstance();
     private int renovacoes = 0;
     private Statement statement;
-    private Date dataDevolucao;
     public EmprestimoService(){
         try{
             statement = fazerConexao().createStatement();
@@ -20,12 +19,12 @@ public class EmprestimoService {
             e.printStackTrace();
         }
     }
-    public void renovar(String data_devolucao) {
-        if (dataDevolucao == null) {
+    public void renovar(Date data_devolucao) {
+        if (data_devolucao == null) {
             if (!jaRenovado()) {
                 calendar.setTime(hoje);
                 calendar.add(Calendar.DAY_OF_MONTH, 15);
-                dataDevolucao = calendar.getTime();
+                data_devolucao = calendar.getTime();
                 renovacoes++;
             } else {
                 throw new RuntimeException("Este empréstimo já foi renovado o número máximo de vezes.");
@@ -49,5 +48,4 @@ public class EmprestimoService {
             return false;
         }
     }
-
 }

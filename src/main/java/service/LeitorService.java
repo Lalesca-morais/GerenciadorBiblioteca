@@ -14,10 +14,9 @@ public class LeitorService {
             e.printStackTrace();
         }
     }
-
-    public void criarLeitor(String email, String cpf, String id, String nome) {
-        String sql = "INSERT INTO leitores (email, cpf, id, nome) VALUES ('" +
-                email + "', '" + cpf + "', '" + id + "', '" + nome + "')";
+    public void criarLeitor(String email, String cpf, String nome) {
+        String sql = "INSERT INTO leitores (email, cpf, nome) VALUES ('" +
+                email + "', '" + cpf + "', '" + nome + "')";
         try {
             statement.executeUpdate(sql);
             System.out.println("Leitor '" + nome + "' foi adicionado com sucesso no banco!");
@@ -26,7 +25,6 @@ public class LeitorService {
             e.printStackTrace();
         }
     }
-
     public void consultaTodosLeitores(){
         String sql = "SELECT * FROM leitores";
         boolean leitoresEncontrados = false;
@@ -45,9 +43,8 @@ public class LeitorService {
             e.printStackTrace();
         }
     }
-
-    public void alterarAutor(String nome) {
-        String sql = "UPDATE livros SET nome = '" + nome + "' WHERE id = ";
+    public void alterarLeitor(String nome) {
+        String sql = "UPDATE leitores SET nome = '" + nome + "' WHERE id = ";
         try {
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0) {
@@ -59,10 +56,8 @@ public class LeitorService {
             e.printStackTrace();
         }
     }
-
     public void deletarLeitores(int id){
         String sql = "DELETE FROM leitores WHERE id = " + id;
-
         try{
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0){
@@ -75,10 +70,8 @@ public class LeitorService {
             e.printStackTrace();
         }
     }
-
     public void consultarLeitorPorId(int id){
         String sql = "SELECT * FROM leitores WHERE id = " + id;
-
         try{
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()){
