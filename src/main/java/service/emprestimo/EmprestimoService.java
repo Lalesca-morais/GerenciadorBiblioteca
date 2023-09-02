@@ -20,7 +20,9 @@ public class EmprestimoService {
         }
     }
     public void renovar(Date data_devolucao) {
+
         if (data_devolucao == null) {
+
             if (!jaRenovado()) {
                 calendar.setTime(hoje);
                 calendar.add(Calendar.DAY_OF_MONTH, 15);
