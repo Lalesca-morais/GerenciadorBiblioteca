@@ -7,18 +7,16 @@ import static connection.Conexao.fazerConexao;
 
 public class LivroService {
     private Statement statement;
-    public LivroService(){
+    public void LivroService(){
         try{
             statement = fazerConexao().createStatement();
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-
     public void criarLivro(String titulo, String id_autor, String ano_publicacao){
         String sql = "INSERT INTO livros (titulo, id_autor, ano_publicacao) " +
                 "VALUES ('" + titulo + "', '" + id_autor + "', '" + ano_publicacao + "')";
-
         try{
             statement.executeUpdate(sql);
             System.out.println("\nLivro '" + titulo + "' criado com sucesso!");
@@ -26,14 +24,11 @@ public class LivroService {
             e.printStackTrace();
         }
     }
-
     public void mostrarTodosOsLivros(){
         String sql = "SELECT * FROM livros";
         boolean livrosEncontrados = false;
-
         try{
             ResultSet resultSet = statement.executeQuery(sql);
-
             while(resultSet.next()){
                 livrosEncontrados = true;
                 System.out.println("=====LIVROS CADASTRADOS=====");
@@ -45,15 +40,12 @@ public class LivroService {
             }if (!livrosEncontrados){
                 System.out.println("Ainda não foi cadastrado nenhum livro.");
             }
-
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-
     public void consultarLivroPorId(int id){
         String sql = "SELECT * FROM livros WHERE id = " + id;
-
         try{
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()){
@@ -67,7 +59,6 @@ public class LivroService {
             e.printStackTrace();
         }
     }
-
     public void alterarLivro(String titulo, String id_autor, String ano_publicacao) {
         String sql = "UPDATE livros SET titulo = '" + titulo +
                 "', id_autor = '" + id_autor + "', ano_publicacao = '" + ano_publicacao + "' WHERE id = ";
@@ -82,10 +73,8 @@ public class LivroService {
             e.printStackTrace();
         }
     }
-
     public void deletarLivro(int id){
         String sql = "DELETE FROM livros WHERE id = " + id;
-
         try{
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0){
