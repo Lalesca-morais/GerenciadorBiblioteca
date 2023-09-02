@@ -5,6 +5,7 @@
 
 Este é um sistema de gerenciamento de biblioteca simples criado em Java. Ele permite que você realize operações como criar, consultar e deletar livros e leitores, bem como fazer empréstimos e renovar empréstimos.
 
+---
 ## Instruções de Uso
 
 Para usar este sistema, siga as instruções abaixo:
@@ -19,6 +20,7 @@ public void iniciar() {
     // ...
 }
 ```
+---
 
 ### Operações Disponíveis
 
@@ -44,7 +46,7 @@ O gerenciador de biblioteca oferece as seguintes operações:
 - `escolhaEmprestimo()`: Inicia o menu de empréstimos.
 - `fazerEmprestimo(String id_usuario, int id_livro, String dataDevolucao)`: Realiza um empréstimo.
 - `renovar(Date data_devolucao)`: Renova um empréstimo.
-
+---
 ### Observações
 
 - Certifique-se de que as conexões com o banco de dados estejam configuradas corretamente antes de usar as operações que envolvem o banco de dados.
