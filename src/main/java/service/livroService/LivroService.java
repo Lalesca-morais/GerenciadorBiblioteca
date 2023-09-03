@@ -1,4 +1,4 @@
-package service;
+package service.livroService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,9 +14,9 @@ public class LivroService {
             e.printStackTrace();
         }
     }
-    public void criarLivro(String titulo, String id_autor, String ano_publicacao){
-        String sql = "INSERT INTO livros (titulo, id_autor, ano_publicacao) " +
-                "VALUES ('" + titulo + "', '" + id_autor + "', '" + ano_publicacao + "')";
+    public void criarLivro(String titulo,String idautor , String anopublicacao){
+        String sql = "INSERT INTO livro (titulo, idautor, anopublicacao) " +
+                "VALUES ('" + titulo + "', '" + idautor + "', '" + anopublicacao + "')";
         try{
             statement.executeUpdate(sql);
             System.out.println("\nLivro '" + titulo + "' criado com sucesso!");
@@ -25,17 +25,17 @@ public class LivroService {
         }
     }
     public void mostrarTodosOsLivros(){
-        String sql = "SELECT * FROM livros";
+        String sql = "SELECT * FROM livro";
         boolean livrosEncontrados = false;
         try{
             ResultSet resultSet = statement.executeQuery(sql);
             while(resultSet.next()){
                 livrosEncontrados = true;
                 System.out.println("=====LIVROS CADASTRADOS=====");
-                System.out.println("ID: " + resultSet.getString("id_livro") +
+                System.out.println("ID: " + resultSet.getString("idlivro") +
                         " | Título: " + resultSet.getString("titulo") +
-                        " | Autor: " + resultSet.getString("id_autor") +
-                        " | Ano de publicação: " + resultSet.getString("ano_publicacao"));
+                        " | Autor: " + resultSet.getString("idautor") +
+                        " | Ano de publicação: " + resultSet.getString("anopublicacao"));
 
             }if (!livrosEncontrados){
                 System.out.println("Ainda não foi cadastrado nenhum livro.");
@@ -45,7 +45,7 @@ public class LivroService {
         }
     }
     public void consultarLivroPorId(int id){
-        String sql = "SELECT * FROM livros WHERE id = " + id;
+        String sql = "SELECT * FROM livro WHERE id = " + id;
         try{
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()){
@@ -59,13 +59,13 @@ public class LivroService {
             e.printStackTrace();
         }
     }
-    public void alterarLivro(String titulo, String id_autor, String ano_publicacao) {
-        String sql = "UPDATE livros SET titulo = '" + titulo +
-                "', id_autor = '" + id_autor + "', ano_publicacao = '" + ano_publicacao + "' WHERE id = ";
+    public void atualizarLivro(String titulo, String idautor, String anopublicacao) {
+        String sql = "UPDATE livro SET titulo = '" + titulo +
+                "', idautor = '" + idautor + "', anopublicacao = '" + anopublicacao + "' WHERE id = ";
         try {
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0) {
-                System.out.println("Livro com nome " + titulo + "foi alterado com sucesso.");
+                System.out.println("Livro com nome " + titulo + "foi atualizado com sucesso.");
             } else {
                 System.out.println("Livro com nome " + titulo + " não encontrado.");
             }
@@ -74,12 +74,11 @@ public class LivroService {
         }
     }
     public void deletarLivro(int id){
-        String sql = "DELETE FROM livros WHERE id = " + id;
+        String sql = "DELETE FROM livro WHERE id = " + id;
         try{
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0){
                 System.out.println("Livro " + id + " foi deletado com sucesso!");
-
             }else{
                 System.out.println("Livro " + id + " não encontrado!");
             }

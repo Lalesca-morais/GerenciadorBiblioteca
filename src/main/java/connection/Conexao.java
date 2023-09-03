@@ -9,7 +9,6 @@ public class Conexao {
         try {
             Connection conexao = DriverManager.getConnection
                     ("jdbc:postgresql://localhost:5432/biblioteca", "postgres", "1234");
-
             if (conexao != null){
                 System.out.println("Conexão deu certo!\n");
             }else {
