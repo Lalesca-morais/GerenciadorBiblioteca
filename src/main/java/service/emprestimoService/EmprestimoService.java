@@ -1,4 +1,4 @@
-package service.emprestimo;
+package service.emprestimoService;
 
 import java.sql.SQLException;
 import java.sql.Statement;

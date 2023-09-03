@@ -1,17 +1,13 @@
 package view;
 
-import service.LeitorService;
-import service.LivroService;
-import service.emprestimo.MenuEmprestimoService;
+import service.leitorService.LeitorService;
+import service.livroService.LivroService;
+import service.emprestimoService.MenuEmprestimoService;
 
 public class MenuView {
-    private LivroService livroService;
-    private LeitorService leitorService;
-    private MenuEmprestimoService menuEmprestimoService;
-    public MenuView() {
-        livroService = new LivroService();
-        leitorService = new LeitorService();
-    }
+     LivroService livroService = new LivroService();
+     LeitorService leitorService = new LeitorService();
+     MenuEmprestimoService menuEmprestimoService;
     public void iniciar() {
 
         livroService.criarLivro("Dom Quixote", "1", "1605");
@@ -22,9 +18,9 @@ public class MenuView {
         livroService.deletarLivro(2);
         livroService.mostrarTodosOsLivros();
 
-        leitorService.criarLeitor("lucas_silva@gmail.com", "8332571093", "Lucas");
-        leitorService.criarLeitor("ana.morais@gmail.com", "98537253718", "Ana");
-        leitorService.criarLeitor("marina_oliveira@gmail.com", "642849275284", "Marina");
+        leitorService.criarLeitor("lucas_silva@gmail.com", "Lucas");
+        leitorService.criarLeitor("ana.morais@gmail.com",  "Ana");
+        leitorService.criarLeitor("marina_oliveira@gmail.com", "Marina");
         leitorService.alterarLeitor("Lucas");
         leitorService.consultaTodosLeitores();
         leitorService.consultarLeitorPorId(3);

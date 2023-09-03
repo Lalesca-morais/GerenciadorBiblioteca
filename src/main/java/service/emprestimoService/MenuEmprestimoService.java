@@ -1,6 +1,4 @@
-package service.emprestimo;
-
-import service.emprestimo.EmprestimoService;
+package service.emprestimoService;
 
 import java.sql.Date;
 import java.util.InputMismatchException;

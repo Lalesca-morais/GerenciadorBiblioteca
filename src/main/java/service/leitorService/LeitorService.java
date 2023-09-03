@@ -1,10 +1,9 @@
-package service;
+package service.leitorService;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import static connection.Conexao.fazerConexao;
-
 public class LeitorService {
     private Statement statement;
     public LeitorService(){
@@ -14,19 +13,18 @@ public class LeitorService {
             e.printStackTrace();
         }
     }
-    public void criarLeitor(String email, String cpf, String nome) {
-        String sql = "INSERT INTO leitores (email, cpf, nome) VALUES ('" +
-                email + "', '" + cpf + "', '" + nome + "')";
+    public void criarLeitor(String nome, String email) {
+        String sql = "INSERT INTO leitor (nome, email) VALUES ('" +
+                nome + "', '" + email + "')";
         try {
             statement.executeUpdate(sql);
             System.out.println("Leitor '" + nome + "' foi adicionado com sucesso no banco!");
-        } catch (SQLException e)
-        {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
     public void consultaTodosLeitores(){
-        String sql = "SELECT * FROM leitores";
+        String sql = "SELECT * FROM leitor";
         boolean leitoresEncontrados = false;
         try {
             ResultSet resultSet = statement.executeQuery(sql);
@@ -44,7 +42,7 @@ public class LeitorService {
         }
     }
     public void alterarLeitor(String nome) {
-        String sql = "UPDATE leitores SET nome = '" + nome + "' WHERE id = ";
+        String sql = "UPDATE leitor SET nome = '" + nome + "' WHERE id = ";
         try {
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0) {
@@ -57,7 +55,7 @@ public class LeitorService {
         }
     }
     public void deletarLeitores(int id){
-        String sql = "DELETE FROM leitores WHERE id = " + id;
+        String sql = "DELETE FROM leitor WHERE id = " + id;
         try{
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0){
@@ -71,7 +69,7 @@ public class LeitorService {
         }
     }
     public void consultarLeitorPorId(int id){
-        String sql = "SELECT * FROM leitores WHERE id = " + id;
+        String sql = "SELECT * FROM leitor WHERE id = " + id;
         try{
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()){
