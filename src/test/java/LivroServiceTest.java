@@ -1,9 +1,7 @@
-import org.junit.Test;
 
-import static jdk.internal.org.objectweb.asm.util.CheckClassAdapter.verify;
 
 public class LivroServiceTest {
-    @Test
+
 //    public void testCriarLivro() throws SQLException {
 //        Connection connectionMock = mock(Connection.class);
 //        Statement statementMock = mock(Statement.class);

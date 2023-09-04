@@ -18,9 +18,9 @@ public class MenuView {
         livroService.deletarLivro(2);
         livroService.mostrarTodosOsLivros();
 
-        leitorService.criarLeitor("lucas_silva@gmail.com", "Lucas");
-        leitorService.criarLeitor("ana.morais@gmail.com",  "Ana");
-        leitorService.criarLeitor("marina_oliveira@gmail.com", "Marina");
+        leitorService.criarLeitor("Lucas","lucas_silva@gmail.com");
+        leitorService.criarLeitor("Ana","ana.morais@gmail.com");
+        leitorService.criarLeitor("Marina","marina_oliveira@gmail.com");
         leitorService.alterarLeitor("Lucas");
         leitorService.consultaTodosLeitores();
         leitorService.consultarLeitorPorId(3);

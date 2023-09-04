@@ -1,7 +1,6 @@
 package model;
 
 import java.time.LocalDate;
-
 public class EmprestimoModel {
     private LocalDate data_emprestimo;
     private String id;

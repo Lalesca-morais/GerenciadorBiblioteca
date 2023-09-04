@@ -1,8 +1,7 @@
 package service.livroService;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+
 import static connection.Conexao.fazerConexao;
 
 public class LivroService {
@@ -14,9 +13,9 @@ public class LivroService {
             e.printStackTrace();
         }
     }
-    public void criarLivro(String titulo,String idautor , String anopublicacao){
-        String sql = "INSERT INTO livro (titulo, idautor, anopublicacao) " +
-                "VALUES ('" + titulo + "', '" + idautor + "', '" + anopublicacao + "')";
+    public void criarLivro(String titulo,String anopublicacao, String idautor){
+        String sql = "INSERT INTO livro (titulo, anopublicacao, idautor) " +
+                "VALUES ('" + titulo + "', '" + anopublicacao + "', '" + idautor + "')";
         try{
             statement.executeUpdate(sql);
             System.out.println("\nLivro '" + titulo + "' criado com sucesso!");
@@ -50,18 +49,18 @@ public class LivroService {
             ResultSet resultSet = statement.executeQuery(sql);
             if (resultSet.next()){
                 System.out.println("=====LIVRO ENCONTRADO=====");
-                System.out.println("ID: " + resultSet.getString("id_livro") +
+                System.out.println("ID: " + resultSet.getString("idlivro") +
                         " | Título: " + resultSet.getString("titulo") +
-                        " | Autor: " + resultSet.getString("id_autor") +
-                        " | Ano de publicação: " + resultSet.getString("ano_publicacao"));
+                        " | Autor: " + resultSet.getString("idautor") +
+                        " | Ano de publicação: " + resultSet.getString("anopublicacao"));
             }
         }catch (SQLException e){
             e.printStackTrace();
         }
     }
-    public void atualizarLivro(String titulo, String idautor, String anopublicacao) {
+    public void atualizarLivro(String titulo, String anopublicacao, String idautor) {
         String sql = "UPDATE livro SET titulo = '" + titulo +
-                "', idautor = '" + idautor + "', anopublicacao = '" + anopublicacao + "' WHERE id = ";
+                "', anopublicacao = '" + anopublicacao + "', idautor = '" + idautor + "' WHERE id = ";
         try {
             int rowCount = statement.executeUpdate(sql);
             if (rowCount > 0) {
